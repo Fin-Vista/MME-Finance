@@ -182,8 +182,12 @@
                         MMFinBench is a first-of-its-kind test suite for evaluating the performance of LLMs on multimodal open book financial question answering (QA).
                         It comprises 1000+ questions about publicly traded companies, with corresponding answers and evidence strings. 
                         The questions in MMFinbench are ecologically valid and cover a diverse set of scenarios. They are intended to be clear-cut and straightforward to answer to serve as a minimum performance standard. 
-                        We test 16 state of the art model configurations (eg., GPT-4o and GPT4-V, etc) on a sample of 300+ figures (150+ pictures collected from English and Chinese source corresponding) from MMFinBench, 
-                        and manually review their answers. The cases are available open-source. We show that existing LLMs have clear limitations for multimodal financial QA. 
+                        We test 7 state of the art model configurations (eg., InternVL and Cogvlm2, etc) on a sample of 172 figures
+                        <!-- (150+ pictures collected from English and Chinese source corresponding) -->
+                         from MMFinBench, and uzilize GPT-4o to evaluate thier answers.
+                        <!-- and manually review their answers.  -->
+                        <!-- The cases are available open-source.  -->
+                        We show that existing LLMs have clear limitations for multimodal financial QA. 
                         Notably, We find that all models examined exhibit weaknesses, such as hallucinations, that limit their suitability for use byenterprises.
                     </p>
                 </div>
@@ -209,9 +213,10 @@
                         MMFinBench has heterogeneous financial classical image types are consist of candlestick chart,
                         technical indicator chart, statistical chart, table, and document. In addition, it explores various formats
                         for the same content, these formats include computer screenshot, mobile photography, vertical screenshot on 
-                        mobile, and horizontal screenshot on mobile.
+                        mobile, and horizontal screenshot on mobile. For one image, MMFinBench designs several questions based on the
+                        types of tasks.
                     </p>
-                    <img class="columns is-centered has-text-centered" src="./static/images/images.png" alt="Teaser" width="95%"
+                    <img class="columns is-centered has-text-centered" src="./static/images/images_final.png" alt="Teaser" width="95%"
                          style="margin:0 auto">
                     <br>
                     <figcaption>
@@ -220,16 +225,16 @@
                         </p>
                     </figcaption>
                 </div>
-                <h4 class="title is-3">•Multi-level Financial Task</h4>
+                <h4 class="title is-3">•Multi-level Abilities and Tasks</h4>
                     <p>
                         MMFinBench evaluates the abilities of multimodal large language model in three levels, including low level, middle level,
                         and high level. Low level represents model's perception ability, which consists of image caption, OCR, entity recognition, and ,
-                        spatial awareness tasks. Middle level refer to model's reasoning ability, which includes numerical calculation, trend analysis, logic analysis,
+                        spatial awareness tasks. Middle level refers to model's reasoning ability, which includes numerical calculation, trend analysis, logic analysis,
                         and financial knowledge tasks. High level denotes the advanced cognitive ability, it contains reason explaination, risk warning, and 
-                        invest advice tasks. In addition, MMFinBench sometimes provide background information with web search for model.
+                        investment advice tasks. In addition, MMFinBench sometimes provide background information with web search for model.
                     </p>
                     <div class="content has-text-justified">
-                    <img class="columns is-centered has-text-centered" src="./static/images/ability.png" alt="Teaser" width="95%"
+                    <img class="columns is-centered has-text-centered" src="./static/images/ability_final.png" alt="Teaser" width="95%"
                         style="margin:0 auto">
                     <br>
                     <figcaption>
@@ -243,12 +248,12 @@
                 <h4 class="title is-3">•Collection and Annotation </h4>
                     <div class="content has-text-justified">
                         <p>
-                            MMFinBench collects images from various platform, including AInvest, IFinD, TradingView, etc. To generate questions, we first
+                            MMFinBench collects images from various platform, including AInvest, IFinD, AIME, TradingView, etc. To generate questions, we first
                             give several question examples for each task, then use GPT-4o to propose questions for each image, and invite experts to review these questions
                             to ensure the reasonability of questions. As for answers, we first adpot GPT-4o to generate initial answers, and let annotators to review these
                             answers, finally some experts recheck these answers to ensure the quality.
                         </p>
-                    <img class="columns is-centered has-text-centered" src="./static/images/annotation.png" alt="Teaser" width="95%"
+                    <img class="columns is-centered has-text-centered" src="./static/images/annotation_final.png" alt="Teaser" width="95%"
                         style="margin:0 auto">
                     <br>
                     <figcaption>
@@ -260,11 +265,12 @@
                 <h4 class="title is-3">•Evaluation </h4>
                     <div class="content has-text-justified">
                         <p>
-                            In the evaluation pipeline of MMFinBench, Images and corresponding questions are feed into the Multi-modal large language model.
-                            With the prediction prompt, model generates predictions. We use GPT-4o to process paired predictions and answers, and output evaluation scores
-                            based on evaluation prompt.  
+                            In the evaluation pipeline of MMFinBench, images and corresponding questions are feed into the Multi-modal large language model.
+                            With the response format prompt, model generates suitable response. We use GPT-4o to process paired predictions and answers, and output evaluation scores
+                            based on evaluation prompt. In addition, MMFinBench divide scores into four level, including type level(score for different types of images), format level
+                            (score for different formats of images), ability level(scores for various abilities), and task level(score for a variety of tasks).
                         </p>
-                    <img class="columns is-centered has-text-centered" src="./static/images/evaluation.png" alt="Teaser" width="95%"
+                    <img class="columns is-centered has-text-centered" src="./static/images/evaluation_final.png" alt="Teaser" width="95%"
                          style="margin:0 auto">
                     <br>
                     <figcaption>
