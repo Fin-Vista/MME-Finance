@@ -58,7 +58,7 @@
             <span class="author-block">
               Ziliang Gan<sup>1</sup> </a>,</span>
                         <span class="author-block">
-              Yuan Xu<sup>2</sup></a>, Che Liu<sup>3</sup>, Jian Liu<sup>4</sup>, Haipang Wu<sup>1</sup>, 
+              Yuan Xu<sup>2</sup></a>, Dong Zhang<sup>1</sup>, Che Liu<sup>3</sup>,  Jian Liu<sup>4</sup>, Haipang Wu<sup>1</sup>, 
             </span>
             <br>
             <span class="author-block">
@@ -67,7 +67,7 @@
                     </div>
                     <div class="is-size-5 publication-authors" style="margin-top: 10px;">
                         <span class="author-block">
-                            <sup>1</sup>Hithink RoyalFlush Information Network Co., Ltd., China. 
+                            <sup>1</sup>Hithink RoyalFlush Information Network Co., Ltd., China
                         </span>
                         <br>
                         <span class="author-block">
@@ -182,8 +182,12 @@
                         MMFinBench is a first-of-its-kind test suite for evaluating the performance of LLMs on multimodal open book financial question answering (QA).
                         It comprises 1000+ questions about publicly traded companies, with corresponding answers and evidence strings. 
                         The questions in MMFinbench are ecologically valid and cover a diverse set of scenarios. They are intended to be clear-cut and straightforward to answer to serve as a minimum performance standard. 
-                        We test 16 state of the art model configurations (eg., GPT-4o and GPT4-V, etc) on a sample of 300+ figures (150+ pictures collected from English and Chinese source corresponding) from MMFinBench, 
-                        and manually review their answers. The cases are available open-source. We show that existing LLMs have clear limitations for multimodal financial QA. 
+                        We test 7 state of the art model configurations (eg., InternVL and Cogvlm2, etc) on a sample of 172 figures
+                        <!-- (150+ pictures collected from English and Chinese source corresponding) -->
+                         from MMFinBench, and uzilize GPT-4o to evaluate thier answers.
+                        <!-- and manually review their answers.  -->
+                        <!-- The cases are available open-source.  -->
+                        We show that existing LLMs have clear limitations for multimodal financial QA. 
                         Notably, We find that all models examined exhibit weaknesses, such as hallucinations, that limit their suitability for use byenterprises.
                     </p>
                 </div>
@@ -203,59 +207,75 @@
         <!-- Architecture -->
         <div class="columns is-centered">
             <div class="column is-full-width">
-                <h4 class="title is-3">•Data </h4>
+                <h4 class="title is-3">•Overview of the Data </h4>
                 <div class="content has-text-justified">
-                    <img class="columns is-centered has-text-centered" src="./static/images/images.png" alt="Teaser" width="95%"
+                    <p>
+                        MMFinBench has heterogeneous financial classical image types are consist of candlestick chart,
+                        technical indicator chart, statistical chart, table, and document. In addition, it explores various formats
+                        for the same content, these formats include computer screenshot, mobile photography, vertical screenshot on 
+                        mobile, and horizontal screenshot on mobile. For one image, MMFinBench designs several questions based on the
+                        types of tasks.
+                    </p>
+                    <img class="columns is-centered has-text-centered" src="./static/images/images_final.png" alt="Teaser" width="95%"
                          style="margin:0 auto">
                     <br>
                     <figcaption>
                         <p style="text-align: center; color: #1d3f9c;">
-                            <b>Figure 1:</b> Fin-Vista has heterogeneous financial classical image types are consist of candlestick chart,
-                            technical indicator chart, statistical chart, table, and document. In addition, it explores various formats
-                            for the same content, these formats include computer screenshot, mobile photography, vertical screenshot on 
-                            mobile, and horizontal screenshot on mobile.
+                            <b>Figure 1:</b> Overivew of the types and formats of images in MMFinBench.
                         </p>
                     </figcaption>
                 </div>
-                <h4 class="title is-3">•Ability </h4>
+                <h4 class="title is-3">•Multi-level Abilities and Tasks</h4>
+                    <p>
+                        MMFinBench evaluates the abilities of multimodal large language model in three levels, including low level, middle level,
+                        and high level. Low level represents model's perception ability, which consists of image caption, OCR, entity recognition, and ,
+                        spatial awareness tasks. Middle level refers to model's reasoning ability, which includes numerical calculation, trend analysis, logic analysis,
+                        and financial knowledge tasks. High level denotes the advanced cognitive ability, it contains reason explaination, risk warning, and 
+                        investment advice tasks. In addition, MMFinBench sometimes provide background information with web search for model.
+                    </p>
                     <div class="content has-text-justified">
-                    <img class="columns is-centered has-text-centered" src="./static/images/ability.png" alt="Teaser" width="95%"
+                    <img class="columns is-centered has-text-centered" src="./static/images/ability_final.png" alt="Teaser" width="95%"
                         style="margin:0 auto">
                     <br>
                     <figcaption>
                         <p style="text-align: center; color: #061E61;">
-                            <b>Figure 2:</b> Fin-Vista evaluates the abilities of multimodal large language model in three levels, including low level, middle level,
-                            and high level. Low level represents model's perception ability, which consists of image caption, OCR, entity recognition, and ,
-                            spatial awareness tasks. Middle level refer to model's reasoning ability, which includes numerical calculation, trend analysis, logic analysis,
-                            and financial knowledge tasks. High level denotes the advanced cognitive ability, it contains reason explaination, risk warning, and 
-                            invest advice tasks. In addition, Fin-vista sometimes provide background information with web search for model.
+                            <b>Figure 2:</b> 
+                        The tasks in MMFinBench are divided into three levels for evaluating the ability of model, including low-level preception ability, middle-level
+                        reasoning ability, and high-level cognition ability.
                         </p>
                     </figcaption>
                     </div>
                 <h4 class="title is-3">•Collection and Annotation </h4>
                     <div class="content has-text-justified">
-                    <img class="columns is-centered has-text-centered" src="./static/images/annotation.png" alt="Teaser" width="95%"
+                        <p>
+                            MMFinBench collects images from various platform, including AInvest, IFinD, AIME, TradingView, etc. To generate questions, we first
+                            give several question examples for each task, then use GPT-4o to propose questions for each image, and invite experts to review these questions
+                            to ensure the reasonability of questions. As for answers, we first adpot GPT-4o to generate initial answers, and let annotators to review these
+                            answers, finally some experts recheck these answers to ensure the quality.
+                        </p>
+                    <img class="columns is-centered has-text-centered" src="./static/images/annotation_final.png" alt="Teaser" width="95%"
                         style="margin:0 auto">
                     <br>
                     <figcaption>
                         <p style="text-align: center; color: #061E61;">
-                            <b>Figure 3:</b> Fin-Vista collects images from various platform, including AInvest, IFinD, TradingView, etc. To generate questions, we first
-                            give several question examples for each task, then use GPT-4o to propose questions for each image, and invite experts to review these questions
-                            to ensure the reasonability of questions. As for answers, we first adpot GPT-4o to generate initial answers, and let annotators to review these
-                            answers, finally some experts recheck these answers to ensure the quality.
+                            <b>Figure 3:</b> Overview of collection and annotation pipeline of MMFinBench.
                         </p>
                     </figcaption>
                     </div>
                 <h4 class="title is-3">•Evaluation </h4>
                     <div class="content has-text-justified">
-                    <img class="columns is-centered has-text-centered" src="./static/images/evaluation.png" alt="Teaser" width="95%"
+                        <p>
+                            In the evaluation pipeline of MMFinBench, images and corresponding questions are feed into the Multi-modal large language model.
+                            With the response format prompt, model generates suitable response. We use GPT-4o to process paired predictions and answers, and output evaluation scores
+                            based on evaluation prompt. In addition, MMFinBench divide scores into four level, including type level(score for different types of images), format level
+                            (score for different formats of images), ability level(scores for various abilities), and task level(score for a variety of tasks).
+                        </p>
+                    <img class="columns is-centered has-text-centered" src="./static/images/evaluation_final.png" alt="Teaser" width="95%"
                          style="margin:0 auto">
                     <br>
                     <figcaption>
                         <p style="text-align: center; color: #061E61;">
-                            <b>Figure 4:</b> The evaluation pipeline of Fin-Vista. Images and corresponding questions are feed into the Multi-modal large language model.
-                            With the prediction prompt, model generates predictions. We use GPT-4o to process paired predictions and answers, and output evaluation scores
-                            based on evaluation prompt.   
+                            <b>Figure 4:</b>  The complete evaluation pipeline of MMFinBench. 
                         </p>
                     </figcaption>
                     </div>
@@ -304,6 +324,11 @@
                 <h3 class="title is-4">• Numerical Calculation</h3>
                     <div class="content has-text-justified">
                     <img class="columns is-centered has-text-centered" src="./static/images/Numerical Computer.png" alt="Teaser" width="95%"
+                         style="margin:0 auto">
+                    <br>
+                <h3 class="title is-4">• Investment Advice</h3>
+                    <div class="content has-text-justified">
+                    <img class="columns is-centered has-text-centered" src="./static/images/Investment advice.png" alt="Teaser" width="95%"
                          style="margin:0 auto">
                     <br>
                     <!-- <figcaption>
